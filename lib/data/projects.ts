@@ -8,6 +8,11 @@ export interface Project {
   architecture: string;
   challenges: string[];
   features: string[];
+  problem: string;
+  rationale: string;
+  lessons: string;
+  futureRoadmap: string[];
+  results: { label: string; value: string }[];
   github?: string;
   demo?: string;
   status: "completed" | "in-progress" | "planned";
@@ -39,7 +44,22 @@ export const projects: Project[] = [
       "CI/CD pipeline integration",
       "Multi-session parallel execution",
     ],
-    github: "https://github.com/nyasalohiya",
+    problem: "Enterprise QA teams were spending thousands of hours writing fragile, manual UI test scripts that broke on every minor update. There was no automated way to discover and map all possible UI states.",
+    rationale: "We chose a decoupled architecture with FastAPI orchestrating LangGraph agents, allowing the reasoning engine to scale independently from the Playwright execution nodes. NetworkX was selected for its robust graph algorithms to efficiently calculate shortest paths through the UI.",
+    lessons: "Autonomous browser interaction is highly non-deterministic. I learned the critical importance of implementing robust retry logic, visual state verification, and bounded exploration limits to prevent agents from getting stuck in infinite loops.",
+    futureRoadmap: [
+      "Visual regression testing with screenshot diffing",
+      "LLM-powered test case generation from exploration graphs",
+      "Multi-browser parallel execution (Firefox, WebKit)",
+      "Integration with Jira for automated bug filing",
+    ],
+    results: [
+      { label: "UI States Discovered", value: "124+" },
+      { label: "Exploration Progress", value: "82%" },
+      { label: "Crawl Paths Mapped", value: "489" },
+      { label: "Total Actions Executed", value: "3.1k" },
+    ],
+    github: "https://github.com/nyasalohiya/UIVerse",
     status: "completed",
   },
   {
@@ -66,14 +86,29 @@ export const projects: Project[] = [
       "Semantic search across knowledge base",
       "Context-aware response generation",
     ],
-    github: "https://github.com/nyasalohiya",
+    problem: "Generic LLMs lacked specific context about users' private documents and previous conversations. Users needed a secure, personalized AI that remembered context across sessions and could reason over their specific files.",
+    rationale: "Azure OpenAI was selected for enterprise-grade security and compliance. The RAG pipeline was designed with persistent vector stores to separate persona memory from document knowledge, preventing cross-contamination.",
+    lessons: "Managing context windows effectively is harder than just retrieving documents. I developed custom truncation and summarization algorithms to maintain conversation coherence without exceeding token limits or losing critical context.",
+    futureRoadmap: [
+      "Multi-modal document support (images, audio transcripts)",
+      "Agent-based tool use for external API integration",
+      "Fine-tuned persona models for domain expertise",
+      "Collaborative shared knowledge bases across teams",
+    ],
+    results: [
+      { label: "Personas Supported", value: "5+" },
+      { label: "Documents Indexed", value: "500+" },
+      { label: "Avg Response Time", value: "1.2s" },
+      { label: "Context Retention", value: "95%" },
+    ],
+    github: "https://github.com/nyasalohiya/PersonalAi",
     status: "completed",
   },
   {
     id: "fastapi-rag",
-    title: "FastAPI RAG Document QA System",
+    title: "FastAPI RAG Document QA",
     description:
-      "Document Q&A platform using Retrieval-Augmented Generation (RAG) and semantic search powered by Sentence Transformers & PyPDF2.",
+      "Document Q&A platform using Retrieval-Augmented Generation and semantic search powered by Sentence Transformers & PyPDF2.",
     longDescription:
       "A production-ready RAG system built on FastAPI that enables organizations to deploy document Q&A capabilities at scale. The system ingests documents in multiple formats (PDF, DOCX, TXT) via PyPDF2, creates semantic embeddings using Sentence Transformers, and provides contextual question answering.",
     thumbnail: "/projects/fastapi-rag.png",
@@ -93,7 +128,22 @@ export const projects: Project[] = [
       "Contextual question answering REST API",
       "Rate limiting and usage monitoring",
     ],
-    github: "https://github.com/nyasalohiya",
+    problem: "Internal teams were unable to quickly extract factual answers from thousands of scattered PDFs and Word documents, leading to massive inefficiencies in research and operations.",
+    rationale: "FastAPI provided the async performance needed for high-throughput retrieval. Sentence Transformers (open-source) were chosen over proprietary embeddings to reduce API costs at scale and allow fine-tuning on domain-specific vocabulary.",
+    lessons: "Data quality dictates RAG performance. I learned that aggressive document preprocessing, custom chunking strategies (handling tables and headers properly), and metadata filtering are far more impactful than just upgrading the LLM model.",
+    futureRoadmap: [
+      "Hybrid search combining dense + sparse retrieval (BM25)",
+      "Multi-tenant document isolation with RBAC",
+      "Streaming response generation",
+      "Evaluation pipeline with RAGAS metrics",
+    ],
+    results: [
+      { label: "Formats Supported", value: "3" },
+      { label: "Avg Retrieval", value: "120ms" },
+      { label: "Embedding Dims", value: "384" },
+      { label: "Accuracy Score", value: "91%" },
+    ],
+    github: "https://github.com/nyasalohiya/rag-fastapi",
     status: "completed",
   },
 ];

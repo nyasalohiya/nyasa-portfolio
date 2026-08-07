@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "AI Engineer specializing in Generative AI, AI Agents, LangGraph, and LLM-powered Applications.",
 };
 
+import Scene from "@/components/3d/Scene";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,14 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-transparent`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
+          <Scene />
+          <div className="relative z-10 flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
