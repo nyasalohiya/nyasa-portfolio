@@ -69,8 +69,8 @@ export default function TechStack() {
             </AnimatePresence>
           </svg>
 
-          {/* Nodes */}
-          <div className="absolute inset-0 z-20">
+          {/* Nodes - Desktop (Absolute Graph) */}
+          <div className="hidden md:block absolute inset-0 z-20">
             {techNodes.map((node) => {
               const isHovered = hoveredNode === node.id;
               const isConnected = activeConnections.includes(node.id) || (hoveredNode && techNodes.find(n => n.id === hoveredNode)?.connections.includes(node.id));
@@ -78,7 +78,7 @@ export default function TechStack() {
 
               return (
                 <div
-                  key={node.id}
+                  key={`desktop-${node.id}`}
                   className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-500"
                   style={{ 
                     left: `${node.x}%`, 
@@ -112,6 +112,40 @@ export default function TechStack() {
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     />
                   )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Nodes - Mobile (Flex Layout) */}
+          <div className="md:hidden relative z-20 flex flex-wrap justify-center gap-3 p-6 min-h-[400px] content-center">
+            {techNodes.map((node) => {
+              const isHovered = hoveredNode === node.id;
+              const isConnected = activeConnections.includes(node.id) || (hoveredNode && techNodes.find(n => n.id === hoveredNode)?.connections.includes(node.id));
+              const isFaded = hoveredNode !== null && !isHovered && !isConnected;
+
+              return (
+                <div
+                  key={`mobile-${node.id}`}
+                  className="transition-all duration-500"
+                  style={{ 
+                    opacity: isFaded ? 0.2 : 1,
+                    zIndex: isHovered ? 30 : isConnected ? 25 : 20
+                  }}
+                  onMouseEnter={() => setHoveredNode(node.id)}
+                  onMouseLeave={() => setHoveredNode(null)}
+                >
+                  <div
+                    className={`relative px-4 py-2 rounded-xl backdrop-blur-md border cursor-crosshair transition-all duration-300 flex flex-col items-center gap-1 ${
+                      isHovered 
+                        ? "bg-[#00F0FF]/10 border-[#00F0FF]/50 text-white shadow-[0_0_30px_-5px_rgba(0,240,255,0.3)] scale-110"
+                        : isConnected
+                          ? "bg-white/[0.05] border-white/20 text-white"
+                          : "bg-white/[0.02] border-white/[0.05] text-white/60 hover:border-white/20"
+                    }`}
+                  >
+                    <span className="text-sm font-semibold tracking-wide whitespace-nowrap">{node.name}</span>
+                  </div>
                 </div>
               );
             })}
