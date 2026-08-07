@@ -22,7 +22,7 @@ export function NeuralNetwork() {
       pos[i * 3] = (Math.random() - 0.5) * 20;
       pos[i * 3 + 1] = (Math.random() - 0.5) * 20;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 15;
-      
+
       vel.push({
         x: (Math.random() - 0.5) * 0.01,
         y: (Math.random() - 0.5) * 0.01,
@@ -74,7 +74,7 @@ export function NeuralNetwork() {
           const alpha = 1 - Math.sqrt(distSq) / maxDistance;
           // Subtly mix white and electric cyan
           const color = new THREE.Color(Math.random() > 0.95 ? "#00F0FF" : "#ffffff");
-          
+
           lineColors.push(color.r, color.g, color.b, alpha * 0.4);
           lineColors.push(color.r, color.g, color.b, alpha * 0.4);
           connectionCount++;
@@ -83,7 +83,7 @@ export function NeuralNetwork() {
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
-    
+
     lineGeometry.setAttribute("position", new THREE.Float32BufferAttribute(linePositions, 3));
     lineGeometry.setAttribute("color", new THREE.Float32BufferAttribute(lineColors, 4));
 
@@ -93,7 +93,7 @@ export function NeuralNetwork() {
 
     pointsRef.current.rotation.y += (targetX - pointsRef.current.rotation.y) * 0.05;
     pointsRef.current.rotation.x += (targetY - pointsRef.current.rotation.x) * 0.05;
-    
+
     linesRef.current.rotation.y = pointsRef.current.rotation.y;
     linesRef.current.rotation.x = pointsRef.current.rotation.x;
   });
@@ -104,9 +104,7 @@ export function NeuralNetwork() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={positions.length / 3}
-            array={positions}
-            itemSize={3}
+            args={[positions, 3]}
           />
         </bufferGeometry>
         <pointsMaterial size={0.05} color="#ffffff" transparent opacity={0.6} sizeAttenuation />

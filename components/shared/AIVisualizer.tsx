@@ -3,6 +3,17 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+
+interface AINode {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+  isCyan: boolean;
+}
+
 // Generate random points for nodes
 const generateNodes = (count: number) => {
   return Array.from({ length: count }).map((_, i) => ({
@@ -17,8 +28,9 @@ const generateNodes = (count: number) => {
 };
 
 export default function AIVisualizer() {
-  const [nodes, setNodes] = useState<{ id: number; x: number; y: number; size: number; duration: number; delay: number }[]>([]);
+  // const [nodes, setNodes] = useState<{ id: number; x: number; y: number; size: number; duration: number; delay: number }[]>([]);
   const [mounted, setMounted] = useState(false);
+  const [nodes, setNodes] = useState<AINode[]>([]);
 
   useEffect(() => {
     setNodes(generateNodes(25));
@@ -45,7 +57,7 @@ export default function AIVisualizer() {
         {nodes.map((node, i) => {
           // Connect to the next 2 nodes to create a graph-like structure
           const targets = [nodes[(i + 1) % nodes.length], nodes[(i + 2) % nodes.length]];
-          
+
           return targets.map((target, j) => {
             const isCyanLine = node.isCyan || target.isCyan;
             return (
@@ -79,7 +91,7 @@ export default function AIVisualizer() {
           <motion.g
             key={`node-${node.id}`}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
+            animate={{
               opacity: [0, 0.6, 0],
               scale: [0.5, 1, 0.5],
               x: [`${node.x}%`, `${node.x + (Math.random() * 4 - 2)}%`, `${node.x}%`],

@@ -9,7 +9,7 @@ import type { Project } from "@/lib/data/projects";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export default function CaseStudyPage({ project }: { project: Project }) {
@@ -35,7 +35,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="px-3 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -80,7 +80,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
             className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-[#060608]"
           >
             <div className="relative h-[300px] sm:h-[500px] lg:h-[600px]">
