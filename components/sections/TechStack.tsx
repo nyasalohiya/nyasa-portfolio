@@ -45,16 +45,16 @@ export default function TechStack() {
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white leading-tight">
             Engineering<br />Graph.
           </h2>
-          <p className="mt-6 text-white/40 max-w-2xl mx-auto text-base sm:text-lg hidden sm:block">
+          <p className="mt-6 text-white/40 max-w-2xl mx-auto text-base lg:text-lg hidden lg:block">
             Hover over a node to reveal its architectural relationships and dependencies across the stack.
           </p>
-          <p className="mt-6 text-white/40 max-w-2xl mx-auto text-base sm:hidden">
+          <p className="mt-6 text-white/40 max-w-2xl mx-auto text-base lg:hidden">
             Tap a node to reveal its architectural connections.
           </p>
         </motion.div>
 
         {/* ─── DESKTOP: Interactive Graph ─── */}
-        <div className="hidden md:block relative w-full aspect-video rounded-3xl bg-[#060608] border border-white/[0.04] overflow-hidden">
+        <div className="hidden lg:block relative w-full aspect-video rounded-3xl bg-[#060608] border border-white/[0.04] overflow-hidden">
 
           {/* Background Grid */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
@@ -139,7 +139,7 @@ export default function TechStack() {
         </div>
 
         {/* ─── MOBILE: Categorized Tag Grid ─── */}
-        <div className="md:hidden space-y-6">
+        <div className="lg:hidden space-y-6">
           {categoryOrder.map((category, catIdx) => {
             const nodes = techNodes.filter((n) => n.category === category);
             if (!nodes.length) return null;
