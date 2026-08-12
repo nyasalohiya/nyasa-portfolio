@@ -6,7 +6,7 @@ import { Target, Layers, Zap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-40 bg-transparent overflow-hidden">
+    <section id="experience" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl">
         
         <motion.div

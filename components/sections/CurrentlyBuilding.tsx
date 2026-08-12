@@ -20,7 +20,7 @@ const roadmap = {
 
 export default function CurrentlyBuilding() {
   return (
-    <section className="relative py-24 bg-transparent overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -36,7 +36,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-40 bg-transparent overflow-hidden">
+    <section id="contact" className="relative pt-8 md:pt-12 pb-0 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl text-center">
 
         <motion.div

@@ -36,7 +36,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative py-40 bg-transparent overflow-hidden">
+    <section id="about" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl">
 
         {/* Editorial Header */}

@@ -13,7 +13,7 @@ export default function Projects() {
   const { startTransition } = useTransitionStore();
 
   return (
-    <section id="projects" className="relative py-40 bg-transparent overflow-hidden">
+    <section id="projects" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Section Header */}
         <motion.div

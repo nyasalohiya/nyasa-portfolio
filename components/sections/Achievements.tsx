@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="relative py-32 bg-transparent overflow-hidden">
+    <section id="achievements" className="relative py-16 md:py-24 bg-transparent overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
       <div className="container mx-auto px-6 max-w-5xl">
@@ -74,8 +74,9 @@ export default function Achievements() {
               <li className="flex items-start gap-3">
                 <span className="w-1.5 h-1.5 mt-2 rounded-full bg-[#7C5CFF] shrink-0" />
                 <div>
-                  <p className="font-semibold text-white text-[15px]">Azure AI Engineer Associate</p>
-                  <p className="text-xs text-white/35 mt-0.5">Microsoft</p>
+                  <p className="font-semibold text-white text-[15px]">AI Fluency: Framework & Foundations</p>
+                  <p className="text-xs text-white/35 mt-0.5">ANTHROP\C</p>
+                  <a href="https://verify.skilljar.com/c/zheogz3438hw"></a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

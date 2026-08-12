@@ -402,7 +402,7 @@ export default function MoreProjects() {
   const otherModules = moreProjects.filter((m) => !m.gridClass.includes("col-span-7"));
 
   return (
-    <section className="relative py-24 sm:py-32 bg-transparent overflow-hidden">
+    <section className="relative py-8 md:py-12 bg-transparent overflow-hidden">
       {/* Lab atmosphere */}
       <div className="absolute inset-0 pointer-events-none">
         <div
